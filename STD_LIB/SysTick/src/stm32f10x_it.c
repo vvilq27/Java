@@ -139,12 +139,12 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
-volatile unsigned long int Licznikms;
+volatile unsigned long int cntms;
 
 void SysTick_Handler(void)
 {
-	pinToggle(GPIOC, GPIO_Pin_13);
-	Licznikms++;
+
+	cntms++;
 }
 
 /******************************************************************************/

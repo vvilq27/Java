@@ -7,7 +7,7 @@
 
 #include "stm32f10x.h"
 
-void send_char(char c)
+void UART_send_char(char c)
 {
  while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
  USART_SendData(USART2, c);
@@ -16,8 +16,8 @@ void send_char(char c)
 int __io_putchar(int c)
 {
  if (c=='\n')
- send_char('\r');
- send_char(c);
+ UART_send_char('\r');
+ UART_send_char(c);
  return c;
 }
 

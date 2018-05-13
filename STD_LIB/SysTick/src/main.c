@@ -12,10 +12,13 @@
 #include "stm32f10x.h"
 			
 unsigned long int SysTick_Config_Mod(unsigned long int SysTick_CLKSource, unsigned long int Ticks);
-extern volatile unsigned long int Licznikms;
-void Delay(unsigned long int Opoznieniems){
-	Licznikms = 0;
-	while((Licznikms) < Opoznieniems);
+extern volatile unsigned long int cntms;
+
+
+
+void delay(unsigned long int delms){
+	cntms = 0;
+	while((cntms) < delms);
 }
 
 
@@ -24,7 +27,7 @@ int main(void)
 	RCC_Config();
 	//set systic freq to 1hz
 	//72mhz / 8 / 9M = 1hz
-	if(SysTick_Config_Mod(SysTick_CLKSource_HCLK_Div8, 9000000ul))
+	if(SysTick_Config_Mod(SysTick_CLKSource_HCLK_Div8, 9000ul))
 		while(1);
 
 
@@ -39,7 +42,19 @@ int main(void)
 
 //	GPIO_ResetBits(GPIOC, GPIO_Pin_13);
 
+	unsigned long int del = 500;
+	uint8_t acc = 1;
+
 	for(;;){
+		if(acc){
+			del *= 90;
+			del /= 100;
+		}else{
+			del *= 100;
+			del /= 90;
+		}
+
+
 
 //		for(uint32_t i = 0; i < 2500000; i++);
 
