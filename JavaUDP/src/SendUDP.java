@@ -57,8 +57,8 @@ public class SendUDP {
     
 	public static void main(String[] args) {
 		SendUDP s = new SendUDP();
-		s.sendEcho("hello my nigga!, hihixd");
+		s.sendEcho("hwtf");
+//		s.sendEcho("1653fsdf23,12343.4234,n,12342.42432,e,12,3,13052018");
 		s.close();
 	}
-    
 }
